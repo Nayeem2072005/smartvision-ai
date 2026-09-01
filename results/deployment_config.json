@@ -1,0 +1,6 @@
+{
+  "chosen_classification_model": "resnet50",
+  "chosen_model_name": "ResNet50 (v4 - full unfreeze, expanded dataset)",
+  "chosen_model_test_accuracy": 0.7691448429936701,
+  "detection_model": "yolov8"
+}

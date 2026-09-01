@@ -1,0 +1,12 @@
+torch
+torchvision
+torchaudio
+datasets
+pillow
+matplotlib
+numpy
+scikit-learn
+seaborn
+ultralytics
+pyyaml
+streamlit
