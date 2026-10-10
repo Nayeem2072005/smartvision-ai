@@ -91,7 +91,9 @@ def load_classes():
     with open("data/classes.json") as f:
         class_to_id = json.load(f)
     id_to_class = {v: k for k, v in class_to_id.items()}
-    class_names = [id_to_class[i] for i in range(len(id_to_class))]
+    # The models were trained with class folders in ALPHABETICAL order (standard ImageFolder behaviour),
+    # so output position i means the i-th name alphabetically, not the id stored in classes.json.
+    class_names = sorted(class_to_id.keys())
     return class_names
 
 
