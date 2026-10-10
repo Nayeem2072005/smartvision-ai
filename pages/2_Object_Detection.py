@@ -39,11 +39,12 @@ uploaded_file = st.file_uploader("Upload an image", type=["jpg", "jpeg", "png"])
 
 if uploaded_file is not None:
     image = Image.open(uploaded_file).convert("RGB")
-    img_array = np.array(image)
 
     with st.spinner("Detecting objects..."):
-        results = yolo_model.predict(img_array, conf=confidence_threshold, verbose=False)[0]
-        annotated = results.plot()[:, :, ::-1]  # BGR -> RGB
+        # Pass the PIL image itself: Ultralytics converts it to the BGR order it expects.
+        # (A plain NumPy array is assumed to be BGR, which swapped red and blue before.)
+        results = yolo_model.predict(image, conf=confidence_threshold, verbose=False)[0]
+        annotated = results.plot()[:, :, ::-1]  # BGR -> RGB for display
 
     col1, col2 = st.columns(2)
     with col1:
